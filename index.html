@@ -1,43 +1,302 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>黎书凡的个人网站</title>
-    <style>  
-      body {
-        margin: 0;
-      }
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>男士护肤科学指南</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <style>
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8f9fa;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 30px 40px;
+            background-color: white;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border-radius: 12px;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .header h1 {
+            color: #2c3e50;
+            font-weight: 700;
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+        
+        .section {
+            margin-bottom: 40px;
+            padding: 25px;
+            border-radius: 10px;
+            background-color: #f8f9fa;
+            border-left: 5px solid #4285f4;
+        }
+        
+        .section-title {
+            display: flex;
+            align-items: center;
+            color: #2c3e50;
+            font-weight: 600;
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+        }
+        
+        .section-title i {
+            margin-right: 10px;
+            color: #4285f4;
+            font-size: 1.8rem;
+        }
+        
+        .table {
+            margin-top: 20px;
+        }
+        
+        .table th {
+            background-color: #4285f4;
+            color: white;
+        }
+        
+        .highlight {
+            background-color: #e8f0fe;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+        }
+        
+        .code-block {
+            background-color: #2c3e50;
+            color: #ecf0f1;
+            padding: 15px;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            margin: 15px 0;
+        }
+        
+        .principle {
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 8px;
+            background-color: #e8f0fe;
+            border-left: 4px solid #4285f4;
+        }
+        
+        .pyramid {
+            text-align: center;
+            margin: 30px 0;
+        }
+        
+        .pyramid-level {
+            margin: 0 auto;
+            padding: 15px;
+            color: white;
+            font-weight: 600;
+            margin-bottom: 2px;
+        }
+        
+        .level-1 {
+            background-color: #4285f4;
+            width: 80%;
+            border-radius: 5px;
+        }
+        
+        .level-2 {
+            background-color: #34a853;
+            width: 65%;
+            border-radius: 5px;
+        }
+        
+        .level-3 {
+            background-color: #fbbc05;
+            width: 50%;
+            border-radius: 5px;
+        }
+        
+        .level-4 {
+            background-color: #ea4335;
+            width: 35%;
+            border-radius: 5px;
+        }
+        
+        .rating {
+            color: #fbbc05;
+        }
+        
+        .footer {
+            text-align: center;
+            margin-top: 50px;
+            color: #7f8c8d;
+            font-size: 0.9rem;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+                margin: 20px;
+            }
+        }
     </style>
-  </head>
-  <body>
-    <div style="
-      background-color:#f1f1f1;
-      text-align: center;
-      padding: 40px;
-    ">
-      <img src="https://s1.328888.xyz/2022/09/28/sYYP5.png" alt='黎书凡' width='80px' height="80px">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1><i class="bi bi-droplet-fill"></i> 男士科学护肤指南</h1>
+            <p class="lead">「防御为主，修护为辅，分型而治，内调外养」</p>
+        </div>
+        
+        <div class="section">
+            <h2 class="section-title"><i class="bi bi-diagram-3"></i> 护肤金字塔逻辑</h2>
+            <p>从基础到进阶的护肤体系：</p>
+            
+            <div class="pyramid">
+                <div class="pyramid-level level-4">内调生活</div>
+                <div class="pyramid-level level-3">周期护理</div>
+                <div class="pyramid-level level-2">针对性护理</div>
+                <div class="pyramid-level level-1">清洁+保湿+防晒</div>
+            </div>
+            
+            <div class="highlight">
+                <h4><i class="bi bi-1-circle"></i> 底层防御（必做）</h4>
+                <ul>
+                    <li><strong>清洁：</strong>油皮需用氨基酸表活（避免皂基破坏屏障）</li>
+                    <li><strong>保湿：</strong>选择含神经酰胺/B5的清爽乳液（控油≠去水）</li>
+                    <li><strong>防晒：</strong>ABC原则（Avoid躲避阳光&gt;Block硬防晒&gt;Cream防晒霜）</li>
+                </ul>
+            </div>
+            
+            <div class="highlight">
+                <h4><i class="bi bi-2-circle"></i> 中层修复（选配）</h4>
+                <ul>
+                    <li><strong>美白：</strong>阻断黑色素四阶段（抑制酪氨酸酶→拦截信号→还原黑色素→加速代谢）</li>
+                    <li><strong>抗衰：</strong>对抗光老化（A醇刺激胶原）+抗氧化（VC中和自由基）</li>
+                </ul>
+            </div>
+            
+            <div class="highlight">
+                <h4><i class="bi bi-3-circle"></i> 上层增效（精准）</h4>
+                <ul>
+                    <li><strong>油皮特别护理：</strong>每周1次泥膜吸附油脂，酸类疏通毛孔（水杨酸/果酸）</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2 class="section-title"><i class="bi bi-flask"></i> 成分作用逻辑</h2>
+            
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>需求</th>
+                        <th>有效成分</th>
+                        <th>作用机理</th>
+                        <th>油皮适配度</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>美白</strong></td>
+                        <td>377/熊果苷/传明酸</td>
+                        <td>抑制酪氨酸酶活性</td>
+                        <td class="rating">★★★★☆</td>
+                    </tr>
+                    <tr>
+                        <td><strong>抗衰</strong></td>
+                        <td>视黄醇/玻色因/多肽</td>
+                        <td>刺激胶原蛋白生成</td>
+                        <td class="rating">★★☆☆☆(需保湿)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>控油</strong></td>
+                        <td>锌/烟酰胺/水杨酸</td>
+                        <td>调节皮脂腺分泌</td>
+                        <td class="rating">★★★★★</td>
+                    </tr>
+                    <tr>
+                        <td><strong>抗氧化</strong></td>
+                        <td>VC/VE/白藜芦醇</td>
+                        <td>中和自由基防止暗沉</td>
+                        <td class="rating">★★★★☆</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
+        <div class="section">
+            <h2 class="section-title"><i class="bi bi-clock"></i> 昼夜护理逻辑</h2>
+            
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="highlight">
+                        <h4><i class="bi bi-sun"></i> 白天重点：防御</h4>
+                        <p>抗氧化+防晒</p>
+                        <div class="code-block">
+                            晨间流程 = 温和清洁 + VC精华 + 控油防晒
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="highlight">
+                        <h4><i class="bi bi-moon"></i> 夜间重点：修复</h4>
+                        <p>抗衰+美白</p>
+                        <div class="code-block">
+                            晚间流程 = 双重清洁 + 烟酰胺/A醇 + 神经酰胺保湿
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2 class="section-title"><i class="bi bi-lightbulb"></i> 个性化执行原则</h2>
+            
+            <div class="principle">
+                <h5><i class="bi bi-1-square"></i> 先后顺序</h5>
+                <p>先建立屏障健康（2周），再叠加功效产品</p>
+            </div>
+            
+            <div class="principle">
+                <h5><i class="bi bi-2-square"></i> 浓度梯度</h5>
+                <p>A醇从0.1%开始，377从局部试用起步</p>
+            </div>
+            
+            <div class="principle">
+                <h5><i class="bi bi-3-square"></i> 观察反应</h5>
+                <p>油皮特别注意是否闷痘（避开矿脂/羊毛脂）</p>
+            </div>
+            
+            <div class="principle">
+                <h5><i class="bi bi-4-square"></i> 效果预期</h5>
+                <ul>
+                    <li>控油：1周内可见效</li>
+                    <li>美白：4-8周显效</li>
+                    <li>抗衰：3-6个月见效</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="alert alert-warning">
+            <i class="bi bi-exclamation-triangle"></i> <strong>注意：</strong> 如果执行中有任何不适（刺痛/脱皮/爆痘），建议先停用刺激产品，用B5喷雾+cerave乳液简单护理。
+        </div>
+        
+        <div class="footer">
+            <p>© 2023 男士科学护肤指南 | 内容基于科学护肤原理</p>
+        </div>
     </div>
-    <div style="
-      margin: 120px auto;
-      text-align: center;
-      background-color: #ffffff;
-      padding: 15px;
-      line-height: 1.7;
-    ">
-      <p>世界上最大的猫头--徐芊雨
-      </p>
-
-    </div>
-    <div style="
-      background-color:#f1f1f1;
-      text-align:center;
-      padding: 40px;
-      font-size: 12px
-    ">
-    <p>我的网站</p> 
-    <a href="">友情链接</a>
-    </div>
-
-  </body>
-</html>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html> 
