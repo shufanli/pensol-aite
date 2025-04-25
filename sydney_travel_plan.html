@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>悉尼旅行规划表 (4.30-5.5)</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* 基本样式设置 */
+        body {
+            font-family: 'Noto Sans SC', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #fff;
+            color: #333;
+            width: 210mm;
+            height: 297mm;
+            margin: 0 auto;
+            box-sizing: border-box;
+            padding: 10mm;
+        }
+        
+        .container {
+            width: 100%;
+            height: 100%;
+        }
+        
+        /* 标题样式 */
+        .header {
+            text-align: center;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #3498db;
+        }
+        
+        .header h1 {
+            margin: 0;
+            color: #3498db;
+            font-size: 24px;
+        }
+        
+        .header .sub-info {
+            display: flex;
+            justify-content: space-between;
+            font-size: 14px;
+            margin-top: 5px;
+            color: #666;
+        }
+        
+        /* 行程概览区 */
+        .overview {
+            margin-bottom: 15px;
+        }
+        
+        .overview h2 {
+            font-size: 18px;
+            color: #3498db;
+            margin-bottom: 10px;
+            padding-bottom: 5px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .day-summary {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+        
+        .day-card {
+            flex: 1;
+            min-width: 150px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 8px;
+            background-color: #f9f9f9;
+        }
+        
+        .day-card h3 {
+            margin: 0;
+            font-size: 16px;
+            color: #333;
+            border-bottom: 1px dashed #ccc;
+            padding-bottom: 5px;
+            margin-bottom: 5px;
+        }
+        
+        .day-card p {
+            margin: 5px 0;
+            font-size: 13px;
+        }
+        
+        /* 详细行程表 */
+        .schedule {
+            margin-bottom: 15px;
+        }
+        
+        .schedule h2 {
+            font-size: 18px;
+            color: #3498db;
+            margin-bottom: 10px;
+            padding-bottom: 5px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .schedule-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 13px;
+        }
+        
+        .schedule-table th, .schedule-table td {
+            border: 1px solid #ddd;
+            padding: 6px;
+            text-align: left;
+        }
+        
+        .schedule-table th {
+            background-color: #f2f2f2;
+            font-weight: 500;
+        }
+        
+        .schedule-table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        
+        /* 交通信息区 */
+        .transport {
+            margin-bottom: 15px;
+        }
+        
+        .transport h2 {
+            font-size: 18px;
+            color: #3498db;
+            margin-bottom: 10px;
+            padding-bottom: 5px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .transport-item {
+            margin-bottom: 10px;
+            padding-bottom: 5px;
+            border-bottom: 1px dashed #eee;
+        }
+        
+        .transport-item h3 {
+            font-size: 14px;
+            margin: 0 0 5px 0;
+            color: #555;
+        }
+        
+        .transport-item p {
+            margin: 0;
+            font-size: 13px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .transport-icon {
+            margin-right: 5px;
+            color: #3498db;
+        }
+        
+        /* 实用信息区 */
+        .practical-info {
+            margin-bottom: 15px;
+        }
+        
+        .practical-info h2 {
+            font-size: 18px;
+            color: #3498db;
+            margin-bottom: 10px;
+            padding-bottom: 5px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .practical-info .info-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+        
+        .info-card {
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 10px;
+            background-color: #f9f9f9;
+        }
+        
+        .info-card h3 {
+            margin: 0 0 5px 0;
+            font-size: 14px;
+            color: #333;
+        }
+        
+        .info-card ul {
+            margin: 0;
+            padding-left: 20px;
+            font-size: 13px;
+        }
+        
+        .info-card li {
+            margin-bottom: 3px;
+        }
+        
+        /* 打印按钮 */
+        .print-btn {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+        
+        .print-btn i {
+            margin-right: 5px;
+        }
+        
+        /* 视觉装饰元素 */
+        .decorative-icon {
+            color: #3498db;
+            margin-right: 5px;
+        }
+        
+        /* 打印专用样式 */
+        @media print {
+            body {
+                width: 210mm;
+                height: 297mm;
+                margin: 0;
+                padding: 10mm;
+                print-color-adjust: exact;
+                -webkit-print-color-adjust: exact;
+            }
+            
+            .print-btn {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <button class="print-btn" onclick="window.print()"><i class="fas fa-print"></i> 打印行程表</button>
+    
+    <div class="container">
+        <!-- 标题区 -->
+        <div class="header">
+            <h1><i class="fas fa-plane-departure decorative-icon"></i> 悉尼旅行规划表</h1>
+            <div class="sub-info">
+                <span><i class="fas fa-calendar-alt"></i> 2023年4月30日 - 5月5日（共6天）</span>
+                <span><i class="fas fa-sun"></i> 悉尼秋季：15°C - 23°C，多云转晴</span>
+            </div>
+        </div>
+        
+        <!-- 行程概览区 -->
+        <div class="overview">
+            <h2><i class="fas fa-list decorative-icon"></i> 行程概览</h2>
+            <div class="day-summary">
+                <div class="day-card">
+                    <h3>4月30日（周二）</h3>
+                    <p><i class="fas fa-home"></i> 抵达住处</p>
+                    <p><i class="fas fa-umbrella-beach"></i> Coogee - Bondi海滩</p>
+                    <p><i class="fas fa-shopping-cart"></i> 超市购物</p>
+                </div>
+                <div class="day-card">
+                    <h3>5月1日（周三）</h3>
+                    <p><i class="fas fa-landmark"></i> 悉尼歌剧院</p>
+                    <p><i class="fas fa-ship"></i> 达令港</p>
+                    <p><i class="fas fa-fish"></i> 鱼市场</p>
+                    <p><i class="fas fa-store"></i> 岩石街</p>
+                </div>
+                <div class="day-card">
+                    <h3>5月2日（周四）</h3>
+                    <p><i class="fas fa-store-alt"></i> Paddington</p>
+                    <p><i class="fas fa-utensils"></i> 唐人街</p>
+                    <p><i class="fas fa-university"></i> UNSW大学</p>
+                </div>
+                <div class="day-card">
+                    <h3>5月3日（周五）</h3>
+                    <p><i class="fas fa-paw"></i> 塔龙加动物园</p>
+                </div>
+                <div class="day-card">
+                    <h3>5月4日（周六）</h3>
+                    <p><i class="fas fa-mountain"></i> 蓝山一日游</p>
+                </div>
+                <div class="day-card">
+                    <h3>5月5日（周日）</h3>
+                    <p><i class="fas fa-plane-departure"></i> 返程</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 详细时间表区 -->
+        <div class="schedule">
+            <h2><i class="fas fa-clock decorative-icon"></i> 详细时间表</h2>
+            <table class="schedule-table">
+                <tr>
+                    <th width="15%">日期</th>
+                    <th width="15%">时间</th>
+                    <th width="30%">活动</th>
+                    <th width="40%">详情</th>
+                </tr>
+                <tr>
+                    <td rowspan="4">4月30日<br>周二</td>
+                    <td>上午</td>
+                    <td>抵达住处</td>
+                    <td>Sydney, 1 Robey Street, Mascot NSW 2020</td>
+                </tr>
+                <tr>
+                    <td>中午</td>
+                    <td>休息</td>
+                    <td>调整时差</td>
+                </tr>
+                <tr>
+                    <td>14:00-17:00</td>
+                    <td>Coogee - Bondi海滩</td>
+                    <td>沿海岸步行道漫步，欣赏海景（约6公里）</td>
+                </tr>
+                <tr>
+                    <td>17:30-19:00</td>
+                    <td>家附近超市购物</td>
+                    <td>Woolworths Mascot（生活必需品采购）</td>
+                </tr>
+                <tr>
+                    <td rowspan="5">5月1日<br>周三</td>
+                    <td>09:00-11:00</td>
+                    <td>悉尼歌剧院</td>
+                    <td>参观歌剧院，拍照留念</td>
+                </tr>
+                <tr>
+                    <td>11:30-13:00</td>
+                    <td>午餐</td>
+                    <td>皇家植物园内或歌剧院周边餐厅</td>
+                </tr>
+                <tr>
+                    <td>13:30-15:30</td>
+                    <td>达令港</td>
+                    <td>水族馆、海事博物馆可选游览</td>
+                </tr>
+                <tr>
+                    <td>16:00-17:30</td>
+                    <td>鱼市场</td>
+                    <td>Sydney Fish Market，品尝新鲜海鲜</td>
+                </tr>
+                <tr>
+                    <td>18:00-20:00</td>
+                    <td>岩石区</td>
+                    <td>晚餐及古老街区游览，入住四季酒店</td>
+                </tr>
+                <tr>
+                    <td rowspan="4">5月2日<br>周四</td>
+                    <td>10:00-12:00</td>
+                    <td>Paddington区</td>
+                    <td>Oxford Street，精品店和咖啡馆</td>
+                </tr>
+                <tr>
+                    <td>12:30-14:00</td>
+                    <td>唐人街</td>
+                    <td>午餐及购物</td>
+                </tr>
+                <tr>
+                    <td>14:30-17:00</td>
+                    <td>UNSW大学</td>
+                    <td>参观校园，欣赏大学建筑</td>
+                </tr>
+                <tr>
+                    <td>17:30-</td>
+                    <td>返回住处</td>
+                    <td>Sydney, 1 Robey Street, Mascot</td>
+                </tr>
+                <tr>
+                    <td rowspan="3">5月3日<br>周五</td>
+                    <td>09:30-10:00</td>
+                    <td>乘坐渡轮</td>
+                    <td>环形码头→塔龙加动物园码头</td>
+                </tr>
+                <tr>
+                    <td>10:00-15:00</td>
+                    <td>塔龙加动物园</td>
+                    <td>观赏澳洲特有动物，可参加动物互动</td>
+                </tr>
+                <tr>
+                    <td>15:30-</td>
+                    <td>返回住处</td>
+                    <td>渡轮返回环形码头，地铁回Mascot</td>
+                </tr>
+                <tr>
+                    <td rowspan="4">5月4日<br>周六</td>
+                    <td>08:00-10:00</td>
+                    <td>前往蓝山</td>
+                    <td>从Central Station搭乘火车到Katoomba站</td>
+                </tr>
+                <tr>
+                    <td>10:30-12:00</td>
+                    <td>三姐妹峰</td>
+                    <td>观景台，Echo Point</td>
+                </tr>
+                <tr>
+                    <td>12:30-15:00</td>
+                    <td>scenic world</td>
+                    <td>体验世界最陡缆车，悬崖缆车，雨林漫步</td>
+                </tr>
+                <tr>
+                    <td>16:00-18:30</td>
+                    <td>返回悉尼</td>
+                    <td>火车返回市区</td>
+                </tr>
+                <tr>
+                    <td>5月5日<br>周日</td>
+                    <td colspan="3">返程，无需安排行程</td>
+                </tr>
+            </table>
+        </div>
+        
+        <!-- 交通信息区 -->
+        <div class="transport">
+            <h2><i class="fas fa-subway decorative-icon"></i> 交通信息</h2>
+            <div class="transport-item">
+                <h3>住处到Coogee海滩</h3>
+                <p><i class="fas fa-bus transport-icon"></i> 乘坐400路公交车至Coogee Beach（约30分钟）</p>
+            </div>
+            <div class="transport-item">
+                <h3>Coogee到Bondi海滩</h3>
+                <p><i class="fas fa-walking transport-icon"></i> 沿海岸线步行（约2小时，6公里）</p>
+            </div>
+            <div class="transport-item">
+                <h3>住处到市中心</h3>
+                <p><i class="fas fa-train transport-icon"></i> Mascot站乘坐机场线至市中心（约15分钟）</p>
+            </div>
+            <div class="transport-item">
+                <h3>前往塔龙加动物园</h3>
+                <p><i class="fas fa-train transport-icon"></i> 乘地铁至环形码头 + <i class="fas fa-ship transport-icon"></i> 渡轮至动物园（约40分钟）</p>
+            </div>
+            <div class="transport-item">
+                <h3>前往蓝山</h3>
+                <p><i class="fas fa-train transport-icon"></i> Central Station乘坐Blue Mountains Line至Katoomba站（约2小时）</p>
+            </div>
+        </div>
+        
+        <!-- 实用信息区 -->
+        <div class="practical-info">
+            <h2><i class="fas fa-info-circle decorative-icon"></i> 实用信息</h2>
+            <div class="info-grid">
+                <div class="info-card">
+                    <h3><i class="fas fa-bed"></i> 住宿信息</h3>
+                    <ul>
+                        <li>主要住宿：Sydney, 1 Robey Street, Mascot NSW 2020</li>
+                        <li>5月1日：悉尼四季酒店（Four Seasons Hotel Sydney）</li>
+                        <li>四季酒店地址：199 George St, Sydney NSW 2000</li>
+                    </ul>
+                </div>
+                <div class="info-card">
+                    <h3><i class="fas fa-ticket-alt"></i> 门票信息</h3>
+                    <ul>
+                        <li>悉尼歌剧院导览：成人$43</li>
+                        <li>塔龙加动物园：成人$49</li>
+                        <li>Scenic World：成人$52</li>
+                    </ul>
+                </div>
+                <div class="info-card">
+                    <h3><i class="fas fa-phone-alt"></i> 紧急联系</h3>
+                    <ul>
+                        <li>澳洲紧急电话：000（警察/消防/救护）</li>
+                        <li>中国领事馆：(02) 8595 8002</li>
+                        <li>旅游信息中心：1800 067 676</li>
+                    </ul>
+                </div>
+                <div class="info-card">
+                    <h3><i class="fas fa-lightbulb"></i> 实用提示</h3>
+                    <ul>
+                        <li>准备Opal卡（公共交通卡）</li>
+                        <li>携带防晒霜、太阳镜和防水外套</li>
+                        <li>备好转换插头（澳洲为V型插座）</li>
+                        <li>提前下载Google Maps离线地图</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // 打印功能
+        function printSchedule() {
+            window.print();
+        }
+    </script>
+</body>
+</html> 
